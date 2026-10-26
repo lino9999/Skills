@@ -1,0 +1,555 @@
+default-xp-curve:
+  - 50
+  - 125
+  - 200
+  - 300
+  - 500
+  - 750
+  - 1000
+  - 1500
+  - 2000
+  - 3500
+  - 5000
+  - 7500
+  - 10000
+  - 15000
+  - 20000
+  - 30000
+  - 50000
+  - 75000
+  - 100000
+  - 200000
+  - 300000
+  - 400000
+  - 500000
+  - 600000
+  - 700000
+  - 800000
+  - 900000
+  - 1000000
+  - 1100000
+  - 1200000
+  - 1300000
+  - 1400000
+  - 1500000
+  - 1600000
+  - 1700000
+  - 1800000
+  - 1900000
+  - 2000000
+  - 2100000
+  - 2200000
+  - 2300000
+  - 2400000
+  - 2500000
+  - 2600000
+  - 2750000
+  - 2900000
+  - 3100000
+  - 3400000
+  - 3700000
+  - 4000000
+
+skills:
+  mining:
+    title: "Mining"
+    tagline: "Excavate stone and mineral veins to earn XP."
+    slot: 20
+    material: IRON_PICKAXE
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_defense_title}"
+      - " &8▸ &r{attr_ferocity_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_versatile_tools_title} {talent_versatile_tools_roman}"
+      - "   {talent_versatile_tools_summary}"
+      - " &8▸ &6{talent_spelunking_title} {talent_spelunking_roman}"
+      - "   {talent_spelunking_summary}"
+      - " &8▸ &6{talent_dynamic_mining_title} {talent_dynamic_mining_roman}"
+      - "   {talent_dynamic_mining_summary}"
+    grants:
+      - target: defense
+        amount: 2
+      - target: ferocity
+        amount: 1
+        min-tier: 15
+      - target: versatile_tools
+        amount: 1
+      - target: dynamic_mining
+        amount: 1
+      - target: spelunking
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_defense_title}"
+        - " &8▸ &6{talent_versatile_tools_title} {talent_versatile_tools_roman}"
+        - "    {talent_versatile_tools_summary}"
+        - " &8▸ &6{talent_dynamic_mining_title} {talent_dynamic_mining_roman}"
+        - "    {talent_dynamic_mining_summary}"
+      10:
+        - " &8▸ &f+2 {attr_defense_title}"
+        - " &8▸ &6{talent_versatile_tools_title} {talent_versatile_tools_roman}"
+        - "    {talent_versatile_tools_summary}"
+        - " &8▸ &6{talent_spelunking_title} {talent_spelunking_roman}"
+        - "    {talent_spelunking_summary}"
+        - " &8▸ &6{talent_dynamic_mining_title} {talent_dynamic_mining_roman}"
+        - "    {talent_dynamic_mining_summary}"
+      15:
+        - " &8▸ &f+2 {attr_defense_title}"
+        - " &8▸ &f+1 {attr_ferocity_title}"
+        - " &8▸ &6{talent_versatile_tools_title} {talent_versatile_tools_roman}"
+        - "    {talent_versatile_tools_summary}"
+        - " &8▸ &6{talent_spelunking_title} {talent_spelunking_roman}"
+        - "    {talent_spelunking_summary}"
+        - " &8▸ &6{talent_dynamic_mining_title} {talent_dynamic_mining_roman}"
+        - "    {talent_dynamic_mining_summary}"
+    block-xp:
+      netherrack: 1
+      stone: 1
+      cobblestone: 1
+      diorite: 1
+      granite: 1
+      andesite: 1
+      tuff: 2
+      blackstone: 2
+      deepslate: 2
+      calcite: 3
+      sand: 3
+      end_stone: 3
+      gravel: 4
+      nether_quartz_ore: 5
+      coal_ore: 5
+      iron_ore: 5
+      copper_ore: 5
+      amethyst_block: 5
+      gold_ore: 6
+      lapis_ore: 7
+      redstone_ore: 7
+      deepslate_coal_ore: 8
+      deepslate_iron_ore: 8
+      deepslate_copper_ore: 8
+      budding_amethyst: 9
+      emerald_ore: 9
+      deepslate_gold_ore: 9
+      gilded_blackstone: 10
+      diamond_ore: 10
+      deepslate_lapis_ore: 11
+      deepslate_redstone_ore: 11
+      deepslate_emerald_ore: 14
+      deepslate_diamond_ore: 15
+      ancient_debris: 22
+
+  woodcutting:
+    title: "Woodcutting"
+    tagline: "Fell timber and forest logs to earn XP."
+    slot: 24
+    material: IRON_AXE
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_strength_title}"
+      - " &8▸ &r{attr_crit_damage_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_craftsmanship_title} {talent_craftsmanship_roman}"
+      - "   {talent_craftsmanship_summary}"
+      - " &8▸ &6{talent_master_lumberjack_title} {talent_master_lumberjack_roman}"
+      - "   {talent_master_lumberjack_summary}"
+    grants:
+      - target: strength
+        amount: 2
+      - target: crit_damage
+        amount: 1
+      - target: craftsmanship
+        amount: 1
+      - target: master_lumberjack
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_strength_title}"
+        - " &8▸ &f+1 {attr_crit_damage_title}"
+        - " &8▸ &6{talent_craftsmanship_title} {talent_craftsmanship_roman}"
+        - "    {talent_craftsmanship_summary}"
+      10:
+        - " &8▸ &f+2 {attr_strength_title}"
+        - " &8▸ &f+1 {attr_crit_damage_title}"
+        - " &8▸ &6{talent_craftsmanship_title} {talent_craftsmanship_roman}"
+        - "    {talent_craftsmanship_summary}"
+        - " &8▸ &6{talent_master_lumberjack_title} {talent_master_lumberjack_roman}"
+        - "    {talent_master_lumberjack_summary}"
+    block-xp:
+      oak_log: 6
+      birch_log: 6
+      spruce_log: 6
+      jungle_log: 6
+      acacia_log: 6
+      dark_oak_log: 6
+      mangrove_log: 6
+      cherry_log: 6
+      pale_oak_log: 6
+      oak_wood: 6
+      birch_wood: 6
+      spruce_wood: 6
+      jungle_wood: 6
+      acacia_wood: 6
+      dark_oak_wood: 6
+      mangrove_wood: 6
+      cherry_wood: 6
+      pale_oak_wood: 6
+      crimson_stem: 14
+      warped_stem: 14
+
+  farming:
+    title: "Farming"
+    tagline: "Cultivate and harvest mature crops to earn XP."
+    slot: 23
+    material: GOLDEN_HOE
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_crit_damage_title}"
+      - " &8▸ &r{attr_wisdom_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_bountiful_harvest_title} {talent_bountiful_harvest_roman}"
+      - "   {talent_bountiful_harvest_summary}"
+      - " &8▸ &6{talent_satiation_title} {talent_satiation_roman}"
+      - "   {talent_satiation_summary}"
+      - " &8▸ &6{talent_golden_yield_title} {talent_golden_yield_roman}"
+      - "   {talent_golden_yield_summary}"
+    grants:
+      - target: crit_damage
+        amount: 2
+      - target: wisdom
+        amount: 1
+      - target: bountiful_harvest
+        amount: 1
+      - target: satiation
+        amount: 1
+      - target: golden_yield
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_crit_damage_title}"
+        - " &8▸ &f+1 {attr_wisdom_title}"
+        - " &8▸ &6{talent_bountiful_harvest_title} {talent_bountiful_harvest_roman}"
+        - "    {talent_bountiful_harvest_summary}"
+        - " &8▸ &6{talent_satiation_title} {talent_satiation_roman}"
+        - "    {talent_satiation_summary}"
+      10:
+        - " &8▸ &f+2 {attr_crit_damage_title}"
+        - " &8▸ &f+1 {attr_wisdom_title}"
+        - " &8▸ &6{talent_bountiful_harvest_title} {talent_bountiful_harvest_roman}"
+        - "    {talent_bountiful_harvest_summary}"
+        - " &8▸ &6{talent_satiation_title} {talent_satiation_roman}"
+        - "    {talent_satiation_summary}"
+        - " &8▸ &6{talent_golden_yield_title} {talent_golden_yield_roman}"
+        - "    {talent_golden_yield_summary}"
+    block-xp:
+      bamboo: 1
+      cactus: 2
+      sugar_cane: 2
+      cocoa: 3
+      sweet_berry_bush: 3
+      cave_vines: 3
+      wheat: 4
+      carrots: 4
+      nether_wart: 4
+      melon: 4
+      pumpkin: 5
+      potatoes: 5
+      beetroots: 5
+
+  combat:
+    title: "Combat"
+    tagline: "Slay hostile creatures and bosses to earn XP."
+    slot: 21
+    material: DIAMOND_SWORD
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_strength_title}"
+      - " &8▸ &r{attr_ferocity_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_serrated_strikes_title} {talent_serrated_strikes_roman}"
+      - "   {talent_serrated_strikes_summary}"
+      - " &8▸ &6{talent_dazzle_title} {talent_dazzle_roman}"
+      - "   {talent_dazzle_summary}"
+      - " &8▸ &6{talent_strong_impact_title} {talent_strong_impact_roman}"
+      - "   {talent_strong_impact_summary}"
+      - " &8▸ &6{talent_endangering_title} {talent_endangering_roman}"
+      - "   {talent_endangering_summary}"
+    grants:
+      - target: strength
+        amount: 2
+      - target: ferocity
+        amount: 1
+        min-tier: 15
+      - target: serrated_strikes
+        amount: 1
+      - target: dazzle
+        amount: 1
+      - target: strong_impact
+        amount: 1
+        min-tier: 10
+      - target: endangering
+        amount: 1
+        min-tier: 20
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_strength_title}"
+        - " &8▸ &6{talent_serrated_strikes_title} {talent_serrated_strikes_roman}"
+        - "    {talent_serrated_strikes_summary}"
+        - " &8▸ &6{talent_dazzle_title} {talent_dazzle_roman}"
+        - "    {talent_dazzle_summary}"
+      10:
+        - " &8▸ &f+2 {attr_strength_title}"
+        - " &8▸ &6{talent_serrated_strikes_title} {talent_serrated_strikes_roman}"
+        - "    {talent_serrated_strikes_summary}"
+        - " &8▸ &6{talent_dazzle_title} {talent_dazzle_roman}"
+        - "    {talent_dazzle_summary}"
+        - " &8▸ &6{talent_strong_impact_title} {talent_strong_impact_roman}"
+        - "    {talent_strong_impact_summary}"
+      15:
+        - " &8▸ &f+2 {attr_strength_title}"
+        - " &8▸ &f+1 {attr_ferocity_title}"
+        - " &8▸ &6{talent_serrated_strikes_title} {talent_serrated_strikes_roman}"
+        - "    {talent_serrated_strikes_summary}"
+        - " &8▸ &6{talent_dazzle_title} {talent_dazzle_roman}"
+        - "    {talent_dazzle_summary}"
+        - " &8▸ &6{talent_strong_impact_title} {talent_strong_impact_roman}"
+        - "    {talent_strong_impact_summary}"
+      20:
+        - " &8▸ &f+2 {attr_strength_title}"
+        - " &8▸ &f+1 {attr_ferocity_title}"
+        - " &8▸ &6{talent_serrated_strikes_title} {talent_serrated_strikes_roman}"
+        - "    {talent_serrated_strikes_summary}"
+        - " &8▸ &6{talent_dazzle_title} {talent_dazzle_roman}"
+        - "    {talent_dazzle_summary}"
+        - " &8▸ &6{talent_strong_impact_title} {talent_strong_impact_roman}"
+        - "    {talent_strong_impact_summary}"
+        - " &8▸ &6{talent_endangering_title} {talent_endangering_roman}"
+        - "    {talent_endangering_summary}"
+
+  armory:
+    title: "Armory"
+    tagline: "Withstand enemy blows in combat to earn XP."
+    slot: 32
+    material: SHIELD
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_defense_title}"
+      - " &8▸ &r{attr_speed_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_shamanism_title} {talent_shamanism_roman}"
+      - "   {talent_shamanism_summary}"
+      - " &8▸ &6{talent_infernal_resistance_title} {talent_infernal_resistance_roman}"
+      - "   {talent_infernal_resistance_summary}"
+      - " &8▸ &6{talent_bravery_title} {talent_bravery_roman}"
+      - "   {talent_bravery_summary}"
+    grants:
+      - target: defense
+        amount: 2
+      - target: speed
+        amount: 1
+      - target: shamanism
+        amount: 1
+      - target: infernal_resistance
+        amount: 1
+      - target: bravery
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_defense_title}"
+        - " &8▸ &f+1 {attr_speed_title}"
+        - " &8▸ &6{talent_shamanism_title} {talent_shamanism_roman}"
+        - "    {talent_shamanism_summary}"
+        - " &8▸ &6{talent_infernal_resistance_title} {talent_infernal_resistance_roman}"
+        - "    {talent_infernal_resistance_summary}"
+      10:
+        - " &8▸ &f+2 {attr_defense_title}"
+        - " &8▸ &f+1 {attr_speed_title}"
+        - " &8▸ &6{talent_shamanism_title} {talent_shamanism_roman}"
+        - "    {talent_shamanism_summary}"
+        - " &8▸ &6{talent_infernal_resistance_title} {talent_infernal_resistance_roman}"
+        - "    {talent_infernal_resistance_summary}"
+        - " &8▸ &6{talent_bravery_title} {talent_bravery_roman}"
+        - "    {talent_bravery_summary}"
+
+  enchanting:
+    title: "Enchanting"
+    tagline: "Imbue weapons, armor, and books with magic to earn XP."
+    slot: 22
+    material: ENCHANTING_TABLE
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_wisdom_title}"
+      - " &8▸ &r{attr_crit_chance_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_second_chance_title} {talent_second_chance_roman}"
+      - "   {talent_second_chance_summary}"
+      - " &8▸ &6{talent_reimbursement_title} {talent_reimbursement_roman}"
+      - "   {talent_reimbursement_summary}"
+      - " &8▸ &6{talent_overcompensation_title} {talent_overcompensation_roman}"
+      - "   {talent_overcompensation_summary}"
+    grants:
+      - target: wisdom
+        amount: 2
+      - target: crit_chance
+        amount: 1
+      - target: second_chance
+        amount: 1
+      - target: reimbursement
+        amount: 1
+      - target: overcompensation
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_wisdom_title}"
+        - " &8▸ &f+1 {attr_crit_chance_title}"
+        - " &8▸ &6{talent_second_chance_title} {talent_second_chance_roman}"
+        - "    {talent_second_chance_summary}"
+        - " &8▸ &6{talent_reimbursement_title} {talent_reimbursement_roman}"
+        - "    {talent_reimbursement_summary}"
+      10:
+        - " &8▸ &f+2 {attr_wisdom_title}"
+        - " &8▸ &f+1 {attr_crit_chance_title}"
+        - " &8▸ &6{talent_second_chance_title} {talent_second_chance_roman}"
+        - "    {talent_second_chance_summary}"
+        - " &8▸ &6{talent_reimbursement_title} {talent_reimbursement_roman}"
+        - "    {talent_reimbursement_summary}"
+        - " &8▸ &6{talent_overcompensation_title} {talent_overcompensation_roman}"
+        - "    {talent_overcompensation_summary}"
+
+  fishing:
+    title: "Fishing"
+    tagline: "Cast your line and reel in aquatic catches to earn XP."
+    slot: 29
+    material: FISHING_ROD
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_defense_title}"
+      - " &8▸ &r{attr_wisdom_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_eye_of_the_depths_title} {talent_eye_of_the_depths_roman}"
+      - "   {talent_eye_of_the_depths_summary}"
+      - " &8▸ &6{talent_magnetic_rod_title} {talent_magnetic_rod_roman}"
+      - "   {talent_magnetic_rod_summary}"
+    grants:
+      - target: defense
+        amount: 2
+      - target: wisdom
+        amount: 1
+      - target: eye_of_the_depths
+        amount: 1
+      - target: magnetic_rod
+        amount: 1
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_defense_title}"
+        - " &8▸ &f+1 {attr_wisdom_title}"
+        - " &8▸ &6{talent_eye_of_the_depths_title} {talent_eye_of_the_depths_roman}"
+        - "    {talent_eye_of_the_depths_summary}"
+        - " &8▸ &6{talent_magnetic_rod_title} {talent_magnetic_rod_roman}"
+        - "    {talent_magnetic_rod_summary}"
+
+  alchemy:
+    title: "Alchemy"
+    tagline: "Distill potions and elixirs at brewing stands to earn XP."
+    slot: 30
+    material: BREWING_STAND
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_crit_chance_title}"
+      - " &8▸ &r{attr_wisdom_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_potionmaster_title} {talent_potionmaster_roman}"
+      - "   {talent_potionmaster_summary}"
+      - " &8▸ &6{talent_efficient_brewing_title} {talent_efficient_brewing_roman}"
+      - "   {talent_efficient_brewing_summary}"
+      - " &8▸ &6{talent_mystic_resilience_title} {talent_mystic_resilience_roman}"
+      - "   {talent_mystic_resilience_summary}"
+    grants:
+      - target: crit_chance
+        amount: 2
+      - target: wisdom
+        amount: 1
+      - target: potionmaster
+        amount: 1
+      - target: mystic_resilience
+        amount: 1
+      - target: efficient_brewing
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_crit_chance_title}"
+        - " &8▸ &f+1 {attr_wisdom_title}"
+        - " &8▸ &6{talent_potionmaster_title} {talent_potionmaster_roman}"
+        - "    {talent_potionmaster_summary}"
+        - " &8▸ &6{talent_mystic_resilience_title} {talent_mystic_resilience_roman}"
+        - "    {talent_mystic_resilience_summary}"
+      10:
+        - " &8▸ &f+2 {attr_crit_chance_title}"
+        - " &8▸ &f+1 {attr_wisdom_title}"
+        - " &8▸ &6{talent_potionmaster_title} {talent_potionmaster_roman}"
+        - "    {talent_potionmaster_summary}"
+        - " &8▸ &6{talent_efficient_brewing_title} {talent_efficient_brewing_roman}"
+        - "    {talent_efficient_brewing_summary}"
+        - " &8▸ &6{talent_mystic_resilience_title} {talent_mystic_resilience_roman}"
+        - "    {talent_mystic_resilience_summary}"
+
+  exploration:
+    title: "Exploration"
+    tagline: "Traverse biomes and survive steep drops to earn XP."
+    slot: 33
+    material: COMPASS
+    overview-details:
+      - "&fAttribute Grants:"
+      - " &8▸ &r{attr_speed_title}"
+      - " &8▸ &r{attr_crit_chance_title}"
+      - ""
+      - "&fPassive Talents:"
+      - " &8▸ &6{talent_seamless_movement_title} {talent_seamless_movement_roman}"
+      - "   {talent_seamless_movement_summary}"
+      - " &8▸ &6{talent_dodging_title} {talent_dodging_roman}"
+      - "   {talent_dodging_summary}"
+      - " &8▸ &6{talent_accelerated_escape_title} {talent_accelerated_escape_roman}"
+      - "   {talent_accelerated_escape_summary}"
+    grants:
+      - target: speed
+        amount: 2
+      - target: crit_chance
+        amount: 1
+      - target: seamless_movement
+        amount: 1
+      - target: dodging
+        amount: 1
+      - target: accelerated_escape
+        amount: 1
+        min-tier: 10
+    tier-notes:
+      1:
+        - " &8▸ &f+2 {attr_speed_title}"
+        - " &8▸ &f+1 {attr_crit_chance_title}"
+        - " &8▸ &6{talent_seamless_movement_title} {talent_seamless_movement_roman}"
+        - "    {talent_seamless_movement_summary}"
+        - " &8▸ &6{talent_dodging_title} {talent_dodging_roman}"
+        - "    {talent_dodging_summary}"
+      10:
+        - " &8▸ &f+2 {attr_speed_title}"
+        - " &8▸ &f+1 {attr_crit_chance_title}"
+        - " &8▸ &6{talent_seamless_movement_title} {talent_seamless_movement_roman}"
+        - "    {talent_seamless_movement_summary}"
+        - " &8▸ &6{talent_dodging_title} {talent_dodging_roman}"
+        - "    {talent_dodging_summary}"
+        - " &8▸ &6{talent_accelerated_escape_title} {talent_accelerated_escape_roman}"
+        - "    {talent_accelerated_escape_summary}"

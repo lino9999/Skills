@@ -1,0 +1,11 @@
+# Token Saver - Ignore large files, builds, and raw dumps for AI tools
+build/
+.gradle/
+.git/
+Plugin originale/
+extracted_resources/
+dump_info.js
+*.jar
+*.class
+*.zip
+*.log

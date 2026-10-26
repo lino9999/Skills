@@ -1,0 +1,228 @@
+storage:
+  driver: SQLITE
+  sqlite-file: "profiles.db"
+  autosave-seconds: 300
+
+blacklisted-worlds: []
+
+ranking:
+  refresh-seconds: 60
+  display-limit: 10
+
+mana-pool:
+  base-capacity: 100.0
+  wisdom-scaling: 1.0
+  regen-ratio-per-second: 0.02
+
+hud-bar:
+  enabled: true
+  refresh-ticks: 10
+  normalize-hearts: true
+  ignored-worlds: []
+  template: "&c♥ &f{hp}&8/&f{max_hp}     &#f472b6🛡 &f{attr_defense}  &8|  &#ef4444⚔ &f{attr_strength}  &8|  &#34d399✦ &f{attr_speed}  &8|  &#38bdf8💧 &f{mana}&8/&f{max_mana}"
+
+combat-tags:
+  enabled: true
+  use-post-mitigation: false
+  regular-template: "&7-{value}"
+  critical-template: "&#f43f5e✦ &l-{value} &#f43f5e✦"
+  restore-enabled: true
+  restore-template: "&#4ade80+{value}"
+  spread-horizontal: 0.45
+  spread-vertical: 0.55
+  ignored-mob-types:
+    - armor_stand
+    - item_frame
+    - glow_item_frame
+    - interaction
+    - marker
+    - text_display
+    - item_display
+    - block_display
+
+notifications:
+  xp-gain:
+    action-overlay:
+      enabled: true
+      template: "&#e879f9{skill} &7({current_xp}/{next_xp}) &e+{gained} XP"
+    boss-banner:
+      enabled: true
+      duration-ticks: 60
+      bar-color: PURPLE
+      bar-overlay: PROGRESS
+      template: "&#e879f9&l{skill} &d{roman} &8• &b{current_xp}&7/&b{next_xp} XP &8(&e+{gained}&8)"
+    audio:
+      enabled: true
+      sound-id: "ENTITY_EXPERIENCE_ORB_PICKUP"
+      volume: 0.15
+      pitch: 1.8
+  tier-up:
+    launch-firework: true
+    audio:
+      enabled: true
+      sound-id: "ENTITY_PLAYER_LEVELUP"
+      volume: 1.0
+      pitch: 1.0
+    screen-title:
+      enabled: true
+      header: "&#e879f9&l{skill} &fTier Up!"
+      subheader: "&7Tier {old_level} &8➔ &aTier {level}"
+    chat-announcement:
+      enabled: true
+      lines:
+        - ""
+        - " &#e879f9&lPROGRESSION &8» &fYou advanced &d{skill} &fto &eTier {roman}&f!"
+        - " &#e879f9&lUNLOCKED BONUSES:"
+        - "{bonuses}"
+        - ""
+
+menus:
+  overview:
+    rows: 6
+    primary-border: GRAY_STAINED_GLASS_PANE
+    accent-border: BLACK_STAINED_GLASS_PANE
+    border-layout:
+      - "BGGGGGGGB"
+      - "BGGGGGGGB"
+      - "BG.....GB"
+      - "BG..G..GB"
+      - "BGGGGGGGB"
+      - "BGGGGGGGB"
+    profile-card:
+      slot: 4
+      title: "&#38bdf8&l{player}'s Profile"
+      lore:
+        - ""
+        - " {attr_defense_title}: &f{attr_defense_val} &a{attr_defense_mod}"
+        - " {attr_strength_title}: &f{attr_strength_val} &a{attr_strength_mod}"
+        - " {attr_crit_chance_title}: &f{attr_crit_chance_val}% &a{attr_crit_chance_mod}"
+        - " {attr_crit_damage_title}: &f{attr_crit_damage_val}% &a{attr_crit_damage_mod}"
+        - " {attr_speed_title}: &f{attr_speed_val} &a{attr_speed_mod}"
+        - " {attr_wisdom_title}: &f{attr_wisdom_val} &a{attr_wisdom_mod}"
+        - " {attr_ferocity_title}: &f{attr_ferocity_val} &a{attr_ferocity_mod}"
+        - ""
+        - " &7Combined Tier: &e{total_level}"
+        - " &7Average Tier: &b{average_level}"
+        - ""
+        - "&#facc15▸ Click to inspect RPG Attributes"
+    skill-card:
+      title: "&#e879f9&l{skill} &d{roman}"
+      wrap-length: 34
+      lore:
+        - "&7{tagline}"
+        - ""
+        - "{details}"
+        - ""
+        - "&fNext Tier Progress:"
+        - " &8▸ &b{percent}% &8[{meter}&8]"
+        - " &8▸ &e{current_xp} &7/ &f{next_xp} XP"
+        - ""
+        - "&#facc15▸ Click to open 50-Tier Roadmap"
+    exit-button:
+      slot: 49
+      material: BARRIER
+      title: "&#f43f5eClose Menu"
+
+  attributes:
+    rows: 6
+    primary-border: GRAY_STAINED_GLASS_PANE
+    accent-border: BLACK_STAINED_GLASS_PANE
+    border-layout:
+      - "BGGGGGGGB"
+      - "BGGGGGGGB"
+      - "B.G.G.G.B"
+      - "BG.G.G.GB"
+      - "BGGGGGGGB"
+      - "BGGGGGGGB"
+    profile-slot: 4
+    attribute-card:
+      title: "{attribute}"
+      wrap-length: 30
+      lore:
+        - "&7Current Value: &a{value}"
+        - ""
+        - "{summary}"
+    return-button:
+      slot: 48
+      material: ARROW
+      title: "&#facc15Return to Skills"
+    exit-button:
+      slot: 49
+      material: BARRIER
+      title: "&#f43f5eClose Menu"
+
+  roadmap:
+    rows: 6
+    background-pane: BLACK_STAINED_GLASS_PANE
+    path-slots:
+      - 0
+      - 9
+      - 18
+      - 27
+      - 28
+      - 29
+      - 20
+      - 11
+      - 2
+      - 3
+      - 4
+      - 13
+      - 22
+      - 31
+      - 32
+      - 33
+      - 24
+      - 15
+      - 6
+      - 7
+      - 8
+      - 17
+      - 26
+      - 35
+      - 44
+      - 53
+    completed-node:
+      material: LIME_STAINED_GLASS_PANE
+      title: "&#4ade80&l{skill} Tier {roman}"
+      lore:
+        - ""
+        - "&fTier Bonuses:"
+        - "{bonuses}"
+        - ""
+        - "&#4ade80✔ COMPLETED"
+    active-node:
+      material: YELLOW_STAINED_GLASS_PANE
+      title: "&#facc15&l{skill} Tier {roman}"
+      lore:
+        - ""
+        - "&fTier Bonuses:"
+        - "{bonuses}"
+        - ""
+        - "&fProgress: &e{percent}%"
+        - "&b{current_xp} &7/ &f{next_xp} XP"
+    locked-node:
+      material: RED_STAINED_GLASS_PANE
+      title: "&#f43f5e&l{skill} Tier {roman}"
+      lore:
+        - ""
+        - "&fTier Bonuses:"
+        - "{bonuses}"
+        - ""
+        - "&#f43f5e✖ LOCKED"
+    return-button:
+      slot: 45
+      material: OAK_DOOR
+      title: "&#facc15Return to Overview"
+    prev-button:
+      slot: 48
+      material: ARROW
+      title: "&fPrevious Page"
+    exit-button:
+      slot: 49
+      material: BARRIER
+      title: "&#f43f5eClose Menu"
+    next-button:
+      slot: 50
+      material: ARROW
+      inactive-material: GRAY_DYE
+      title: "&fNext Page"

@@ -1,0 +1,88 @@
+name: Skills
+version: '${version}'
+main: com.lino.skills.SkillsPlugin
+api-version: '1.21'
+authors: [Lino]
+description: Modular RPG professions, attributes, passive talents, and progression system for Minecraft servers.
+website: https://github.com/lino9999/Skills
+folia-supported: true
+softdepend:
+  - PlaceholderAPI
+  - Vault
+
+commands:
+  skills:
+    description: Open your Skills menu or manage player preferences.
+    aliases: [skill, sk, professions]
+    permission: skills.menu
+  stats:
+    description: View your active RPG attributes breakdown.
+    aliases: [stat, st, attributes]
+    permission: skills.stats
+  skillsadmin:
+    description: Administrative command suite for managing player progression.
+    aliases: [skadmin, sadmin]
+    permission: skills.admin
+
+permissions:
+  skills.*:
+    description: Grants complete access to all Skills features and administrative tools.
+    default: op
+    children:
+      skills.admin: true
+      skills.menu: true
+      skills.stats: true
+      skills.rank: true
+      skills.hud: true
+      skills.audio: true
+  skills.menu:
+    description: Allows opening the main Skills overview GUI.
+    default: true
+  skills.stats:
+    description: Allows opening the RPG Attributes GUI.
+    default: true
+  skills.rank:
+    description: Allows viewing the server progression leaderboard.
+    default: true
+  skills.hud:
+    description: Allows toggling the persistent Action Bar HUD.
+    default: true
+  skills.audio:
+    description: Allows toggling experience gain sound effects.
+    default: true
+  skills.admin:
+    description: Grants access to all /skillsadmin management subcommands.
+    default: op
+    children:
+      skills.admin.reload: true
+      skills.admin.add: true
+      skills.admin.set: true
+      skills.admin.wipe: true
+      skills.admin.sync: true
+  skills.admin.reload:
+    description: Allows reloading plugin configurations.
+    default: op
+  skills.admin.add:
+    description: Allows granting XP, attributes, or mana to players.
+    default: op
+  skills.admin.set:
+    description: Allows setting a player's skill tier or attribute value.
+    default: op
+  skills.admin.wipe:
+    description: Allows wiping progression profiles.
+    default: op
+  skills.admin.sync:
+    description: Allows recalculating and syncing player attributes.
+    default: op
+  skills.boost.150:
+    description: Multiplies earned skill experience by 1.5x.
+    default: false
+  skills.boost.200:
+    description: Multiplies earned skill experience by 2.0x.
+    default: false
+  skills.boost.300:
+    description: Multiplies earned skill experience by 3.0x.
+    default: false
+  skills.boost.400:
+    description: Multiplies earned skill experience by 4.0x.
+    default: false

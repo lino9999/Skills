@@ -1,0 +1,63 @@
+attributes:
+  defense:
+    title: "&#f472b6🛡 Defense"
+    formula: "{level} * 0.25"
+    summary: "&7Reduces incoming combat and environmental damage by &a{value}%&7."
+    slot: 19
+    material: IRON_CHESTPLATE
+
+  strength:
+    title: "&#ef4444⚔ Strength"
+    formula: "{level} * 0.25"
+    summary: "&7Amplifies all melee and ranged attack damage by &a{value}%&7."
+    slot: 21
+    material: BLAZE_POWDER
+
+  crit_chance:
+    title: "&#facc15⚡ Crit Chance"
+    formula: "min({level} * 0.15, 100)"
+    summary: "&7Provides a &a{value}% &7probability to land a devastating critical strike."
+    slot: 23
+    material: GOLDEN_SWORD
+
+  crit_damage:
+    title: "&#60a5fa☠ Crit Damage"
+    formula: "50 + ({level} * 0.4)"
+    summary: "&7Critical strikes inflict &a+{value}% &7bonus damage against targets."
+    slot: 25
+    material: DRAGON_BREATH
+
+  health:
+    title: "&#fb7185❤ Vitality"
+    formula: "{level} * 0.5"
+    summary: "&7Expands your maximum health capacity by &a+{value} HP&7."
+    slot: 29
+    material: GOLDEN_APPLE
+
+  speed:
+    title: "&#34d399✦ Agility"
+    formula: "{level} * 0.15"
+    summary: "&7Boosts your base movement velocity by &a+{value}%&7."
+    slot: 31
+    material: SUGAR
+
+  wisdom:
+    title: "&#38bdf8✎ Wisdom"
+    formula: "{level} * 0.5"
+    summary: "&7Increases earned skill experience by &a+{value}% &7and expands maximum Mana."
+    slot: 33
+    material: ENCHANTED_BOOK
+
+  ferocity:
+    title: "&#f97316🔥 Ferocity"
+    formula: "min({level} * 0.2, 100)"
+    summary: "&7Grants a &a{value}% &7chance to immediately trigger a vicious double strike."
+    slot: 13
+    material: NETHERITE_SWORD
+
+  attack_speed:
+    title: "&#c084fc🗡 Swiftness"
+    formula: "{level} * 0.2"
+    summary: "&7Accelerates weapon recovery speed by &a+{value}%&7."
+    slot: 30
+    material: FEATHER

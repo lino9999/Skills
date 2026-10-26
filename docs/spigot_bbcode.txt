@@ -1,0 +1,129 @@
+[CENTER]
+[IMG]https://i.imgur.com/example_banner.png[/IMG]
+[SIZE=6][COLOR=#ff00ae][B]✨ SKILLS ✨[/B][/COLOR][/SIZE]
+[SIZE=4][B]The Ultimate High-Performance RPG Skills & Stats Engine for Paper & Folia[/B][/SIZE]
+[SIZE=3][COLOR=#7f8c8d]Compatible with Minecraft 1.21.x through 1.26.x+ | Developed by Lino[/COLOR][/SIZE]
+
+[URL='https://github.com/lino9999/Skills'][B][COLOR=#3498db]⭐ GitHub Repository[/COLOR][/B][/URL] | [URL='https://github.com/lino9999/Skills/releases'][B][COLOR=#2ecc71]⬇ Download Latest Release[/COLOR][/B][/URL]
+[/CENTER]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]⚡ Why Choose Skills?[/B][/COLOR][/SIZE]
+
+Are you tired of bloated RPG plugins that require tons of external dependencies, crash on server restarts, or lag your main tick loop?
+[B]Skills[/B] is a clean, modern, ground-up recreation of the classic RPG skill leveling experience:
+[LIST]
+[*][B]Zero Dependency Bloat[/B]: Runs 100% standalone. No proprietary libraries or extra plugin requirements!
+[*][B]Folia & Paper Native[/B]: Built using multi-threaded asynchronous scheduling and non-blocking SQLite database storage.
+[*][B]Ultra Lightweight (130 KB)[/B]: Up to 40x smaller and faster than legacy alternatives.
+[*][B]9 Dynamic Skills[/B]: Mining, Woodcutting, Farming, Combat, Armory, Fishing, Alchemy, Enchanting, and Exploration.
+[*][B]9 Real-Time Attributes/Stats[/B]: Defense, Strength, Speed, Health, Crit Chance, Crit Damage, Ferocity, Wisdom, and Attack Speed.
+[*][B]26 Passive Effects[/B]: Bleed DoT, ore multiplication, crop harvesting boosts, dodge negation, durability auto-repair, and boss defense.
+[*][B]Persistent Action Bar HUD[/B]: Real-time health, defense, strength, speed, and mana right above player hotbars!
+[*][B]Holographic Damage Numbers[/B]: Crisp modern damage and critical strike indicators using native text displays.
+[*][B]Native PlaceholderAPI Hook[/B]: Built-in support for all `%skills_*%` PlaceholderAPI placeholders across scoreboards, tablists, and holograms!
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]🎮 Interactive Chest GUIs[/B][/COLOR][/SIZE]
+[LIST]
+[*][B]/skills[/B]: Opens the primary skill overview with custom decorative glass borders, a personalized player statistics head, and 9 skill cards featuring visual progress bars [COLOR=#2ecc71][██████░░░░][/COLOR].
+[*][B]/stats[/B]: Displays a detailed overview of your active base attributes, skill bonuses, and passive enhancements.
+[*][B]Progression Menu (Click any skill)[/B]: Explore a full 50-level roadmap! Color-coded panes indicate [COLOR=#2ecc71]Unlocked (Lime)[/COLOR], [COLOR=#f1c40f]In Progress (Yellow)[/COLOR], and [COLOR=#e74c3c]Locked (Red)[/COLOR] milestone levels with reward previews.
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]📜 The 9 Skills[/B][/COLOR][/SIZE]
+[TABLE]
+[TR]
+[TH][COLOR=#ff00ae]Skill[/COLOR][/TH]
+[TH][COLOR=#ff00ae]Description[/COLOR][/TH]
+[TH][COLOR=#ff00ae]Key Passive Effects[/COLOR][/TH]
+[/TR]
+[TR]
+[TD][B]⛏ Mining[/B][/TD]
+[TD]Mine stone, deepslate, netherrack, and precious ores[/TD]
+[TD]Defense, Ferocity, Spelunking, Dynamic Mining (Haste III), Versatile Tools[/TD]
+[/TR]
+[TR]
+[TD][B]🪓 Woodcutting[/B][/TD]
+[TD]Chop trees and giant fungi in forests and overworld[/TD]
+[TD]Strength, Master Lumberjack (drop multipliers), Overcompensation[/TD]
+[/TR]
+[TR]
+[TD][B]🌾 Farming[/B][/TD]
+[TD]Harvest wheat, carrots, potatoes, nether wart, and crops[/TD]
+[TD]Health, Wisdom, Bountiful Harvest, Golden Yield, Satiation[/TD]
+[/TR]
+[TR]
+[TD][B]⚔ Combat[/B][/TD]
+[TD]Vanquish hostile monsters, zombies, and nether foes[/TD]
+[TD]Strength, Ferocity, Serrated Strikes (Bleed), Dazzle (Nausea), Strong Impact (3x DMG)[/TD]
+[/TR]
+[TR]
+[TD][B]🛡 Armory[/B][/TD]
+[TD]Withstand incoming damage and craft defensive gear[/TD]
+[TD]Health, Defense, Bravery (Boss DMG reduction), Mystic Resilience, Infernal Resistance[/TD]
+[/TR]
+[TR]
+[TD][B]🎣 Fishing[/B][/TD]
+[TD]Fish in oceans, lakes, and rivers[/TD]
+[TD]Wisdom, Eye of the Depths (Rare ocean loot), Magnetic Rod[/TD]
+[/TR]
+[TR]
+[TD][B]🧪 Alchemy[/B][/TD]
+[TD]Brew potions in brewing stands[/TD]
+[TD]Wisdom, Efficient Brewing, Potionmaster (extended duration)[/TD]
+[/TR]
+[TR]
+[TD][B]✨ Enchanting[/B][/TD]
+[TD]Enchant equipment and books at enchanting tables[/TD]
+[TD]Wisdom, Reimbursement (XP refund), Overcompensation (Lapis refund)[/TD]
+[/TR]
+[TR]
+[TD][B]🧭 Exploration[/B][/TD]
+[TD]Explore new chunks, walk, swim, run, and fly with Elytra[/TD]
+[TD]Speed, Health, Accelerated Escape, Seamless Movement (Fall DMG reduction)[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]💻 Commands & Permissions[/B][/COLOR][/SIZE]
+[CODE]
+Player Commands:
+/skills                  - Open the skills overview GUI (skills.menu)
+/stats                   - Open your attributes GUI (skills.stats)
+/skills rank             - View the top players leaderboard (skills.rank)
+/skills hud              - Toggle the HUD actionbar on/off (skills.hud)
+/skills audio            - Toggle skill XP gain sounds (skills.audio)
+
+Administrator Commands:
+/skillsadmin reload      - Hot-reload all configurations (skills.admin.reload)
+/skillsadmin add <player> <skill|attribute|mana> <amount> - Grant XP/Attributes (skills.admin.add)
+/skillsadmin set <player> <skill|attribute> <value>       - Set tier/bonus (skills.admin.set)
+/skillsadmin wipe <player|all>                            - Wipe progression (skills.admin.wipe)
+/skillsadmin sync [player|all]                            - Sync attributes (skills.admin.sync)
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]🔌 PlaceholderAPI Support[/B][/COLOR][/SIZE]
+[LIST]
+[*][COLOR=#3498db]%skills_<skill>_level%[/COLOR] - Current level
+[*][COLOR=#3498db]%skills_<skill>_level_numeral%[/COLOR] - Roman numeral (e.g. XIV)
+[*][COLOR=#3498db]%skills_<skill>_xp%[/COLOR] - Current progress XP
+[*][COLOR=#3498db]%skills_<skill>_required_xp%[/COLOR] - Next level requirement
+[*][COLOR=#3498db]%skills_<skill>_progress%[/COLOR] - Percentage progress (e.g. 74.2%)
+[*][COLOR=#3498db]%skills_<stat>%[/COLOR] - Total stat value
+[*][COLOR=#3498db]%skills_total_skill_level%[/COLOR] - Total skill level sum
+[*][COLOR=#3498db]%skills_mana%[/COLOR] & [COLOR=#3498db]%skills_mana_limit%[/COLOR] - Mana points
+[/LIST]
+
+[CENTER]
+[SIZE=4][B]Ready to elevate your server's RPG progression?[/B][/SIZE]
+[URL='https://github.com/lino9999/Skills/releases'][B][COLOR=#ff00ae]Download Skills Now on GitHub[/COLOR][/B][/URL]
+[/CENTER]

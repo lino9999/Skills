@@ -1,0 +1,161 @@
+talents:
+  accelerated_escape:
+    title: "Accelerated Escape"
+    summary: "&7Gain &a+{power}% &7burst movement speed for &a1.5s &7after taking damage."
+    formulas:
+      power: "{level} * 4"
+
+  bountiful_harvest:
+    title: "Bountiful Harvest"
+    summary: "&a{chance}% &7chance to harvest &a{mult}x &7drops from mature crops."
+    formulas:
+      chance: "({level} * 8) % 100"
+      mult: "floor({level} * 8 / 100) + 2"
+
+  bravery:
+    title: "Bravery"
+    summary: "&7Suffer &a{reduction}% &7less damage from Boss monsters."
+    formulas:
+      reduction: "min({level} * 1, 50)"
+
+  craftsmanship:
+    title: "Craftsmanship"
+    summary: "&7Axes have a &a{chance}% &7chance to ignore durability loss."
+    formulas:
+      chance: "min({level} * 0.5, 100)"
+
+  dazzle:
+    title: "Dazzle"
+    summary: "&a{chance}% &7chance to inflict Nausea on struck enemies for &a{duration}s&7."
+    formulas:
+      chance: "{level} * 0.5"
+      duration: "(18 + {level} * 2) / 20"
+
+  dodging:
+    title: "Dodging"
+    summary: "&a{chance}% &7chance to completely evade incoming attacks."
+    formulas:
+      chance: "{level} * 0.5"
+
+  dynamic_mining:
+    title: "Dynamic Mining"
+    summary: "&a{chance}% &7chance to trigger Haste III for &a{duration}s &7when breaking blocks."
+    formulas:
+      chance: "{level} * 0.5"
+      duration: "(18 + {level} * 2) / 20"
+
+  efficient_brewing:
+    title: "Efficient Brewing"
+    summary: "&7Reduces brewing stand distillation time by &a{reduction}%&7."
+    formulas:
+      reduction: "{level} * 1.5"
+
+  endangering:
+    title: "Endangering"
+    summary: "&a{chance}% &7chance to bypass enemy post-hit invulnerability frames."
+    formulas:
+      chance: "min({level} * 3, 100)"
+
+  eye_of_the_depths:
+    title: "Eye of the Depths"
+    summary: "&a{chance}% &7chance to reel in rare oceanic treasures while fishing."
+    formulas:
+      chance: "{level} * 0.5"
+
+  golden_yield:
+    title: "Golden Yield"
+    summary: "&a{chance}% &7chance to harvest &a6x &7yield from mature crops."
+    formulas:
+      chance: "min({level} * 0.5, 100)"
+
+  infernal_resistance:
+    title: "Infernal Resistance"
+    summary: "&a{chance}% &7chance to negate fire and lava damage."
+    formulas:
+      chance: "{level} * 0.5"
+
+  magnetic_rod:
+    title: "Magnetic Rod"
+    summary: "&7Increases fishing catch pull velocity by &a+{boost}%&7."
+    formulas:
+      boost: "{level} * 5"
+
+  master_lumberjack:
+    title: "Master Lumberjack"
+    summary: "&a{chance}% &7chance to fell &a{mult}x &7logs from trees."
+    formulas:
+      chance: "({level} * 8) % 100"
+      mult: "floor({level} * 8 / 100) + 2"
+
+  mystic_resilience:
+    title: "Mystic Resilience"
+    summary: "&a{chance}% &7chance to resist negative potion debuffs."
+    formulas:
+      chance: "{level} * 0.5"
+
+  overcompensation:
+    title: "Overcompensation"
+    summary: "&a{chance}% &7chance to recover Lapis Lazuli after enchanting."
+    formulas:
+      chance: "{level} * 0.5"
+
+  potionmaster:
+    title: "Potionmaster"
+    summary: "&7Brewed potions last &a+{extension}% &7longer."
+    formulas:
+      extension: "{level} * 4"
+
+  reimbursement:
+    title: "Reimbursement"
+    summary: "&a{chance}% &7chance to refund experience levels spent at an enchanting table."
+    formulas:
+      chance: "{level} * 0.5"
+
+  satiation:
+    title: "Satiation"
+    summary: "&7Reduces hunger depletion rate by &a{reduction}%&7."
+    formulas:
+      reduction: "{level} * 2"
+
+  seamless_movement:
+    title: "Seamless Movement"
+    summary: "&a{chance}% &7chance to negate fall impact damage."
+    formulas:
+      chance: "{level} * 2"
+
+  second_chance:
+    title: "Second Chance"
+    summary: "&a{chance}% &7chance to instantly restore damaged gear below 30 durability."
+    formulas:
+      chance: "{level} * 0.1"
+
+  serrated_strikes:
+    title: "Serrated Strikes"
+    summary: "&a{chance}% &7chance to cause targets to bleed over 3 seconds."
+    formulas:
+      chance: "{level} * 0.5"
+
+  shamanism:
+    title: "Shamanism"
+    summary: "&7Accelerates natural and potion health regeneration by &a+{boost}%&7."
+    formulas:
+      boost: "{level} * 4"
+
+  spelunking:
+    title: "Spelunking"
+    summary: "&a{chance}% &7chance to extract &a{mult}x &7drops from natural ore veins."
+    formulas:
+      chance: "({level} * 8) % 100"
+      mult: "floor({level} * 8 / 100) + 2"
+
+  strong_impact:
+    title: "Strong Impact"
+    summary: "&a{chance}% &7chance to deal &a300% &7damage on a melee hit."
+    formulas:
+      chance: "{level} * 0.5"
+
+  versatile_tools:
+    title: "Versatile Tools"
+    summary: "&7Pickaxes inflict &a+{boost}% &7extra melee combat damage."
+    formulas:
+      boost: "{level} * 4"

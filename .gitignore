@@ -1,0 +1,33 @@
+# Build & Gradle
+build/
+.gradle/
+out/
+target/
+*.class
+
+# IDE & Editor
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Sensitive & Temporary Analysis
+dump_info.js
+extracted_resources/
+Plugin originale/
+Plugin originale/*
+
+# Release artifacts (built jars are uploaded to GitHub releases)
+*.jar
+!gradle/wrapper/gradle-wrapper.jar

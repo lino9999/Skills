@@ -1,0 +1,157 @@
+[CENTER]
+[SIZE=6][COLOR=#ff00ae][B]📖 SKILLS - COMPLETE DOCUMENTATION[/B][/COLOR][/SIZE]
+[SIZE=4][B]Installation, Configuration, Commands, Permissions & API Reference[/B][/SIZE]
+[SIZE=3][COLOR=#7f8c8d]Author: Lino | Compatible: Paper / Spigot / Folia 1.21.x - 26.x+[/COLOR][/SIZE]
+[/CENTER]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]1. Installation & Requirements[/B][/COLOR][/SIZE]
+[LIST=1]
+[*][B]Server Software[/B]: Paper, Spigot, Purpur, or Folia running Minecraft 1.21.x through 26.x.
+[*][B]Java Version[/B]: Java 21 LTS or newer.
+[*][B]Dependencies[/B]: None required! (Optional: [I]PlaceholderAPI[/I] for placeholders, [I]Vault[/I] for economy integration).
+[*][B]Installation Steps[/B]:
+  [LIST]
+  [*]Place [B]Skills-1.0.0.jar[/B] into your server's [ICODE]plugins/[/ICODE] directory.
+  [*]Start or restart your server.
+  [*]The plugin will automatically generate all configurations, default skills, stats, effects, and the SQLite database ([ICODE]plugins/Skills/data.db[/ICODE]).
+  [/LIST]
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]2. Configuration Structure[/B][/COLOR][/SIZE]
+All settings are consolidated and organized cleanly in [ICODE]plugins/Skills/[/ICODE]:
+
+[LIST]
+[*][B]config.yml[/B]:
+  [LIST]
+  [*][ICODE]storage[/ICODE]: Configure database driver ([ICODE]SQLITE[/ICODE] or [ICODE]YAML[/ICODE]) and auto-save interval.
+  [*][ICODE]menus[/ICODE]: Layouts, slot positions, and item templates for [ICODE]overview[/ICODE], [ICODE]attributes[/ICODE], and [ICODE]roadmap[/ICODE].
+  [*][ICODE]hud-bar[/ICODE]: Enable/disable the HUD actionbar, set format strings, and toggle heart normalization.
+  [*][ICODE]combat-tags[/ICODE]: Floating holographic damage and healing numbers configuration.
+  [*][ICODE]notifications[/ICODE]: XP gain overlays, BossBar banners, tier-up titles, fireworks, and sound effects.
+  [/LIST]
+[*][B]messages.yml[/B]:
+  Contains all English user-facing strings, command responses, and GUI titles.
+[*][B]skills.yml[/B]:
+  Consolidated file configuring XP curves, grants, tier notes, and block XP tables for all 9 skills.
+[*][B]attributes.yml[/B]:
+  Formulas, descriptions, and GUI slots for all 9 RPG attributes.
+[*][B]talents.yml[/B]:
+  Formulas and descriptions for all 26 passive talents.
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]3. Commands & Permissions Matrix[/B][/COLOR][/SIZE]
+
+[TABLE]
+[TR]
+[TH][COLOR=#ff00ae]Command[/COLOR][/TH]
+[TH][COLOR=#ff00ae]Description[/COLOR][/TH]
+[TH][COLOR=#ff00ae]Permission[/COLOR][/TH]
+[TH][COLOR=#ff00ae]Default[/COLOR][/TH]
+[/TR]
+[TR]
+[TD]/skills (aliases: /skill, /sk, /professions)[/TD]
+[TD]Open the interactive Skills Overview menu[/TD]
+[TD]skills.menu[/TD]
+[TD]Everyone (true)[/TD]
+[/TR]
+[TR]
+[TD]/stats (aliases: /stat, /st, /attributes)[/TD]
+[TD]Open the personal Attributes menu[/TD]
+[TD]skills.stats[/TD]
+[TD]Everyone (true)[/TD]
+[/TR]
+[TR]
+[TD]/skills rank[/TD]
+[TD]View the server progression leaderboard[/TD]
+[TD]skills.rank[/TD]
+[TD]Everyone (true)[/TD]
+[/TR]
+[TR]
+[TD]/skills hud[/TD]
+[TD]Toggle the persistent HUD action bar[/TD]
+[TD]skills.hud[/TD]
+[TD]Everyone (true)[/TD]
+[/TR]
+[TR]
+[TD]/skills audio[/TD]
+[TD]Toggle skill XP gain sound effects[/TD]
+[TD]skills.audio[/TD]
+[TD]Everyone (true)[/TD]
+[/TR]
+[TR]
+[TD]/skillsadmin reload[/TD]
+[TD]Hot-reload all YAML configuration files[/TD]
+[TD]skills.admin.reload[/TD]
+[TD]OP[/TD]
+[/TR]
+[TR]
+[TD]/skillsadmin add <player> <target> <amt>[/TD]
+[TD]Grant XP, bonus attributes, or mana[/TD]
+[TD]skills.admin.add[/TD]
+[TD]OP[/TD]
+[/TR]
+[TR]
+[TD]/skillsadmin set <player> <target> <val>[/TD]
+[TD]Set tier of skill or bonus attribute value[/TD]
+[TD]skills.admin.set[/TD]
+[TD]OP[/TD]
+[/TR]
+[TR]
+[TD]/skillsadmin wipe <player|all>[/TD]
+[TD]Wipe progression for a player or all players[/TD]
+[TD]skills.admin.wipe[/TD]
+[TD]OP[/TD]
+[/TR]
+[TR]
+[TD]/skillsadmin sync [player|all][/TD]
+[TD]Re-evaluate and synchronize player attributes[/TD]
+[TD]skills.admin.sync[/TD]
+[TD]OP[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]4. XP Multiplier Permissions[/B][/COLOR][/SIZE]
+You can grant donors and VIP ranks bonus XP multipliers:
+[LIST]
+[*][ICODE]skills.boost.150[/ICODE] - 1.5x XP Gain (+50%)
+[*][ICODE]skills.boost.200[/ICODE] - 2.0x XP Gain (Double XP)
+[*][ICODE]skills.boost.300[/ICODE] - 3.0x XP Gain (Triple XP)
+[*][ICODE]skills.boost.400[/ICODE] - 4.0x XP Gain (Quadruple XP)
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]5. PlaceholderAPI Reference[/B][/COLOR][/SIZE]
+[CODE]
+%skills_<skill>_level%           - Numeric skill level (e.g. 24)
+%skills_<skill>_level_numeral%   - Roman numeral skill level (e.g. XXIV)
+%skills_<skill>_xp%              - Current level progress XP (e.g. 3,450)
+%skills_<skill>_required_xp%     - Next level threshold XP (e.g. 5,000)
+%skills_<skill>_progress%        - Percentage progress bar float (e.g. 69.0)
+%skills_<stat>%                  - Total active stat value (e.g. 45.25)
+%skills_<stat>_name%             - Formatted display name of stat
+%skills_<stat>_base%             - Base value without modifiers
+%skills_<stat>_bonus%            - Bonus value added from modifiers
+%skills_total_skill_level%       - Sum of all 9 skill levels
+%skills_average_skill_level%     - Average skill level
+%skills_mana%                    - Current player mana
+%skills_mana_limit%              - Maximum mana pool capacity
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#ff00ae][B]6. Frequently Asked Questions (FAQ)[/B][/COLOR][/SIZE]
+
+[B]Q: Does this work on Folia?[/B]
+A: Yes! Skills was built with native Folia support from day one using region schedulers and asynchronous database workers.
+
+[B]Q: Will my server lag when 100+ players gain XP simultaneously?[/B]
+A: Not at all. All database operations execute on an asynchronous thread, and calculations use optimized mathematical formulas rather than heavy file reads.
