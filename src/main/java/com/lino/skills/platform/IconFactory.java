@@ -65,12 +65,12 @@ public final class IconFactory {
 
     public IconFactory cleanFlags() {
         if (meta != null) {
-            meta.addItemFlags(
-                    ItemFlag.HIDE_ATTRIBUTES,
-                    ItemFlag.HIDE_ENCHANTS,
-                    ItemFlag.HIDE_ADDITIONAL_TOOLTIP,
-                    ItemFlag.HIDE_UNBREAKABLE
-            );
+            for (String flagName : List.of("HIDE_ATTRIBUTES", "HIDE_ENCHANTS", "HIDE_ADDITIONAL_TOOLTIP", "HIDE_UNBREAKABLE", "HIDE_ARMOR_TRIM")) {
+                try {
+                    meta.addItemFlags(ItemFlag.valueOf(flagName));
+                } catch (IllegalArgumentException ignored) {
+                }
+            }
         }
         return this;
     }

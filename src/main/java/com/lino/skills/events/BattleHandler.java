@@ -6,8 +6,10 @@ import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Boss;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -16,12 +18,16 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Set;
 
 public final class BattleHandler implements Listener {
+
+    private static final String FEROCITY_GUARD_KEY = "skills_ferocity_proc";
+    private static final String CRIT_TAG_KEY = "skills_crit_strike";
 
     private static final Set<PotionEffectType> DEBUFF_TYPES = Set.of(
             PotionEffectType.POISON,
@@ -45,16 +51,49 @@ public final class BattleHandler implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onCombatExchange(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof Player attacker) {
+        if (event.getEntity().hasMetadata(FEROCITY_GUARD_KEY)) {
+            return;
+        }
+
+        Player attacker = resolvePlayerAttacker(event.getDamager());
+        if (attacker != null) {
             processOffensiveStrike(attacker, event);
         }
-        if (event.getEntity() instanceof Player defender && event.getDamager() instanceof Boss) {
+
+        if (event.getEntity() instanceof Player defender && isBossEntity(event.getDamager())) {
             int bravery = plugin.getAttributeService().resolveTalentLevel(defender, "bravery");
             if (bravery > 0) {
                 double factor = 1.0 - Math.min(0.50, bravery * 0.01);
                 event.setDamage(event.getDamage() * factor);
             }
         }
+    }
+
+    private Player resolvePlayerAttacker(Entity damager) {
+        if (damager instanceof Player player) {
+            return player;
+        }
+        if (damager instanceof Projectile projectile && projectile.getShooter() instanceof Player shooter) {
+            return shooter;
+        }
+        return null;
+    }
+
+    private boolean isBossEntity(Entity damager) {
+        if (damager == null) {
+            return false;
+        }
+        if (damager instanceof Boss) {
+            return true;
+        }
+        String typeName = damager.getType().name();
+        if (typeName.equals("ENDER_DRAGON") || typeName.equals("WITHER") || typeName.equals("WARDEN") || typeName.equals("ELDER_GUARDIAN")) {
+            return true;
+        }
+        if (damager instanceof Projectile projectile && projectile.getShooter() instanceof Entity shooter) {
+            return isBossEntity(shooter);
+        }
+        return false;
     }
 
     private void processOffensiveStrike(Player attacker, EntityDamageByEntityEvent event) {
@@ -73,11 +112,14 @@ public final class BattleHandler implements Listener {
 
         if (plugin.getAttributeService().rollCriticalHit(attacker)) {
             damage *= plugin.getAttributeService().computeCriticalMultiplier(attacker);
+            event.getEntity().setMetadata(CRIT_TAG_KEY, new FixedMetadataValue(plugin, true));
             attacker.getWorld().spawnParticle(Particle.ENCHANTED_HIT, event.getEntity().getLocation().add(0, 1, 0), 14);
             try {
                 attacker.playSound(attacker.getLocation(), Sound.ENTITY_PLAYER_ATTACK_CRIT, 1.0f, 1.0f);
             } catch (Exception ignored) {
             }
+        } else {
+            event.getEntity().removeMetadata(CRIT_TAG_KEY, plugin);
         }
 
         event.setDamage(damage);
@@ -109,7 +151,12 @@ public final class BattleHandler implements Listener {
             double bonusHit = damage;
             SchedulerAdapter.executeAtEntity(plugin, victim, () -> {
                 if (victim.isValid() && !victim.isDead()) {
-                    victim.damage(bonusHit, attacker);
+                    victim.setMetadata(FEROCITY_GUARD_KEY, new FixedMetadataValue(plugin, true));
+                    try {
+                        victim.damage(bonusHit, attacker);
+                    } finally {
+                        victim.removeMetadata(FEROCITY_GUARD_KEY, plugin);
+                    }
                     victim.getWorld().spawnParticle(Particle.SWEEP_ATTACK, victim.getLocation().add(0, 1, 0), 2);
                     try {
                         attacker.playSound(attacker.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.0f, 1.2f);
@@ -161,7 +208,8 @@ public final class BattleHandler implements Listener {
 
         if (cause != EntityDamageEvent.DamageCause.KILL
                 && cause != EntityDamageEvent.DamageCause.SUICIDE
-                && cause != EntityDamageEvent.DamageCause.CONTACT) {
+                && cause != EntityDamageEvent.DamageCause.CONTACT
+                && event.getFinalDamage() > 0.0) {
             long armoryXp = Math.max(1L, Math.round(event.getFinalDamage() * 1.5));
             plugin.getProgressionService().awardExperience(player, "armory", armoryXp, false);
         }

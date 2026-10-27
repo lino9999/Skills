@@ -109,7 +109,7 @@ public final class OverviewGui {
             for (AttributeDefinition attr : plugin.getConfigRegistry().getAttributes().values()) {
                 double val = plugin.getAttributeService().resolveAttribute(player, attr.id());
                 double mod = profile.getBonusAttribute(attr.id());
-                String modText = mod > 0 ? "(+" + ColorFormatter.formatDecimal(mod) + ")" : "";
+                String modText = mod > 0 ? " &a(+" + ColorFormatter.formatDecimal(mod) + ")" : "";
 
                 resolved = resolved
                         .replace("{attr_" + attr.id() + "_title}", attr.title())

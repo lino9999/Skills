@@ -49,11 +49,17 @@ public final class HarvestHandler implements Listener {
 
         Block block = event.getBlock();
         boolean artificial = block.hasMetadata(ARTIFICIAL_TAG);
+        if (block.getBlockData() instanceof Ageable ageable && ageable.getAge() >= ageable.getMaximumAge()) {
+            artificial = false;
+        }
+
         String key = block.getType().name().toLowerCase(Locale.ROOT);
 
         evaluateBlockExperience(player, block, key, artificial);
         evaluateBonusYields(player, block, artificial);
         evaluateDynamicMining(player);
+
+        block.removeMetadata(ARTIFICIAL_TAG, plugin);
     }
 
     private void evaluateBlockExperience(Player player, Block block, String key, boolean artificial) {
@@ -62,26 +68,27 @@ public final class HarvestHandler implements Listener {
             if (baseXp == null || baseXp <= 0L) {
                 continue;
             }
-            if (artificial && !isVerticalPlant(block.getType())) {
-                return;
-            }
-            if (skill.id().equals("farming") && block.getBlockData() instanceof Ageable ageable) {
-                if (ageable.getAge() < ageable.getMaximumAge()) {
-                    return;
-                }
-            }
 
             int stackCount = 1;
             if (isVerticalPlant(block.getType())) {
-                if (artificial) {
-                    return;
-                }
+                stackCount = artificial ? 0 : 1;
                 Block above = block.getRelative(BlockFace.UP);
                 while (above.getType() == block.getType() && stackCount < 16) {
                     if (!above.hasMetadata(ARTIFICIAL_TAG)) {
                         stackCount++;
                     }
                     above = above.getRelative(BlockFace.UP);
+                }
+                if (stackCount <= 0) {
+                    return;
+                }
+            } else if (artificial) {
+                return;
+            }
+
+            if (skill.id().equals("farming") && block.getBlockData() instanceof Ageable ageable) {
+                if (ageable.getAge() < ageable.getMaximumAge()) {
+                    return;
                 }
             }
 
@@ -91,7 +98,7 @@ public final class HarvestHandler implements Listener {
     }
 
     private void evaluateBonusYields(Player player, Block block, boolean artificial) {
-        if (artificial) {
+        if (artificial && !isVerticalPlant(block.getType())) {
             return;
         }
         Material type = block.getType();

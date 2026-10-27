@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 public final class ColorFormatter {
 
     private static final Pattern HEX_TOKEN = Pattern.compile("&#([A-Fa-f0-9]{6})");
+    private static final Pattern BARE_HEX = Pattern.compile("(?<!&)#([A-Fa-f0-9]{6})");
     private static final LegacyComponentSerializer SERIALIZER = LegacyComponentSerializer.builder()
             .character('&')
             .hexCharacter('#')
@@ -53,9 +54,17 @@ public final class ColorFormatter {
         if (raw == null || raw.isEmpty()) {
             return Component.empty();
         }
-        String normalized = raw.replace("&#", "&#");
-        return SERIALIZER.deserialize(raw.replace("&#", "#").replace("#", "&#"))
+        String normalized = normalizeHex(raw);
+        return SERIALIZER.deserialize(normalized)
                 .decorationIfAbsent(TextDecoration.ITALIC, TextDecoration.State.FALSE);
+    }
+
+    private static String normalizeHex(String text) {
+        Matcher matcher = BARE_HEX.matcher(text);
+        if (matcher.find()) {
+            return matcher.replaceAll("&#$1");
+        }
+        return text;
     }
 
     public static String formatDecimal(double value) {
@@ -149,11 +158,7 @@ public final class ColorFormatter {
         while (hexMatcher.find()) {
             last = hexMatcher.group(0);
         }
-        for (int i = 0; i < text.length() - 1; i++) {
-            if (text.charAt(i) == '&' && "0123456789abcdefklmnorABCDEFKLMNOR".indexOf(text.charAt(i + 1)) >= 0) {
-                last = text.substring(i, i + 2);
-            }
-        }
-        return last;
+        String legacy = ChatColor.getLastColors(text);
+        return !legacy.isEmpty() ? legacy : last;
     }
 }

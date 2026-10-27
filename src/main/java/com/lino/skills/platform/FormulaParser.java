@@ -1,5 +1,7 @@
 package com.lino.skills.platform;
 
+import java.util.Locale;
+
 public final class FormulaParser {
 
     private FormulaParser() {
@@ -11,7 +13,9 @@ public final class FormulaParser {
         }
         String prepared = expression
                 .replace("{level}", String.valueOf(levelValue))
-                .replace("%level%", String.valueOf(levelValue));
+                .replace("{LEVEL}", String.valueOf(levelValue))
+                .replace("%level%", String.valueOf(levelValue))
+                .replace("%LEVEL%", String.valueOf(levelValue));
         try {
             return new Cursor(prepared).evaluate();
         } catch (Exception ex) {
@@ -32,10 +36,14 @@ public final class FormulaParser {
             ch = (++pos < src.length()) ? src.charAt(pos) : -1;
         }
 
-        boolean consume(int target) {
-            while (ch == ' ') {
+        void skipWhitespace() {
+            while (ch == ' ' || ch == '\t') {
                 advance();
             }
+        }
+
+        boolean consume(int target) {
+            skipWhitespace();
             if (ch == target) {
                 advance();
                 return true;
@@ -62,15 +70,15 @@ public final class FormulaParser {
         }
 
         double parseMultiplication() {
-            double val = parseAtom();
+            double val = parseExponent();
             while (true) {
                 if (consume('*')) {
-                    val *= parseAtom();
+                    val *= parseExponent();
                 } else if (consume('/')) {
-                    double div = parseAtom();
+                    double div = parseExponent();
                     val = div != 0.0 ? val / div : 0.0;
                 } else if (consume('%')) {
-                    double mod = parseAtom();
+                    double mod = parseExponent();
                     val = mod != 0.0 ? val % mod : 0.0;
                 } else {
                     return val;
@@ -78,7 +86,17 @@ public final class FormulaParser {
             }
         }
 
+        double parseExponent() {
+            double val = parseAtom();
+            if (consume('^')) {
+                double exponent = parseExponent();
+                val = Math.pow(val, exponent);
+            }
+            return val;
+        }
+
         double parseAtom() {
+            skipWhitespace();
             if (consume('+')) {
                 return parseAtom();
             }
@@ -87,6 +105,7 @@ public final class FormulaParser {
             }
 
             double result;
+            skipWhitespace();
             int startIndex = this.pos;
 
             if (consume('(')) {
@@ -97,11 +116,11 @@ public final class FormulaParser {
                     advance();
                 }
                 result = Double.parseDouble(src.substring(startIndex, this.pos));
-            } else if (ch >= 'a' && ch <= 'z') {
-                while (ch >= 'a' && ch <= 'z') {
+            } else if (Character.isLetter(ch)) {
+                while (Character.isLetter(ch)) {
                     advance();
                 }
-                String fn = src.substring(startIndex, this.pos);
+                String fn = src.substring(startIndex, this.pos).toLowerCase(Locale.ROOT);
                 if (consume('(')) {
                     double first = parseAddition();
                     double second = 0.0;
@@ -113,6 +132,8 @@ public final class FormulaParser {
                         case "floor" -> Math.floor(first);
                         case "ceil" -> Math.ceil(first);
                         case "round" -> Math.round(first);
+                        case "sqrt" -> Math.sqrt(first);
+                        case "abs" -> Math.abs(first);
                         case "min" -> Math.min(first, second);
                         case "max" -> Math.max(first, second);
                         default -> first;

@@ -5,8 +5,10 @@ import com.lino.skills.platform.ColorFormatter;
 import com.lino.skills.platform.SchedulerAdapter;
 import org.bukkit.Location;
 import org.bukkit.entity.Display;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -38,10 +40,12 @@ public final class FloatingTagHandler implements Listener {
             return;
         }
 
-        if (event.getDamager() instanceof Player attacker) {
+        Player attacker = resolvePlayerAttacker(event.getDamager());
+        if (attacker != null) {
             boolean postMitigation = plugin.getConfig().getBoolean("combat-tags.use-post-mitigation", false);
             double dmg = postMitigation ? event.getFinalDamage() : event.getDamage();
-            boolean crit = plugin.getAttributeService().rollCriticalHit(attacker);
+            boolean crit = target.hasMetadata("skills_crit_strike");
+            target.removeMetadata("skills_crit_strike", plugin);
 
             String tpl = crit
                     ? plugin.getConfig().getString("combat-tags.critical-template", "&#f43f5e✦ &l-{value} &#f43f5e✦")
@@ -50,6 +54,16 @@ public final class FloatingTagHandler implements Listener {
             String label = tpl.replace("{value}", ColorFormatter.formatDecimal(dmg));
             spawnHologram(target.getLocation().add(0, target.getHeight() * 0.75, 0), label);
         }
+    }
+
+    private Player resolvePlayerAttacker(Entity damager) {
+        if (damager instanceof Player player) {
+            return player;
+        }
+        if (damager instanceof Projectile projectile && projectile.getShooter() instanceof Player shooter) {
+            return shooter;
+        }
+        return null;
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

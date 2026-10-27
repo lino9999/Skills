@@ -143,7 +143,14 @@ public final class RoadmapGui {
                 .replace("{roman}", ColorFormatter.toRomanNumeral(tier));
 
         long nextXp = skill.thresholdForTier(tier);
-        double pct = nextXp > 0 ? Math.min(100.0, ((double) currentXp / nextXp) * 100.0) : 100.0;
+        double pct;
+        if (tier <= playerTier) {
+            pct = 100.0;
+        } else if (tier == playerTier + 1) {
+            pct = nextXp > 0 ? Math.min(100.0, ((double) currentXp / nextXp) * 100.0) : 100.0;
+        } else {
+            pct = 0.0;
+        }
 
         List<String> tierNotes = skill.resolveTierNotes(tier);
         List<String> rawLore = plugin.getConfig().getStringList(basePath + ".lore");

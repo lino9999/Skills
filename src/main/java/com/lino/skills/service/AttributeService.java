@@ -50,7 +50,7 @@ public final class AttributeService {
         double agility = resolveAttribute(player, "speed");
         double swiftness = resolveAttribute(player, "attack_speed");
 
-        AttributeInstance maxHp = player.getAttribute(Attribute.MAX_HEALTH);
+        AttributeInstance maxHp = getPlayerAttribute(player, "MAX_HEALTH", "GENERIC_MAX_HEALTH");
         if (maxHp != null) {
             maxHp.setBaseValue(20.0 + (vitality * 0.5));
         }
@@ -59,17 +59,32 @@ public final class AttributeService {
             player.setHealthScale(20.0);
         }
 
-        AttributeInstance moveSpeed = player.getAttribute(Attribute.MOVEMENT_SPEED);
+        AttributeInstance moveSpeed = getPlayerAttribute(player, "MOVEMENT_SPEED", "GENERIC_MOVEMENT_SPEED");
         if (moveSpeed != null) {
             double multiplier = 1.0 + Math.min(2.0, agility * 0.0015);
             moveSpeed.setBaseValue(0.1 * multiplier);
         }
 
-        AttributeInstance atkSpeed = player.getAttribute(Attribute.ATTACK_SPEED);
+        AttributeInstance atkSpeed = getPlayerAttribute(player, "ATTACK_SPEED", "GENERIC_ATTACK_SPEED");
         if (atkSpeed != null) {
             double multiplier = 1.0 + Math.min(2.0, swiftness * 0.002);
             atkSpeed.setBaseValue(4.0 * multiplier);
         }
+    }
+
+    @SuppressWarnings("removal")
+    private AttributeInstance getPlayerAttribute(Player player, String... candidateNames) {
+        for (String name : candidateNames) {
+            try {
+                Attribute attr = Attribute.valueOf(name);
+                AttributeInstance instance = player.getAttribute(attr);
+                if (instance != null) {
+                    return instance;
+                }
+            } catch (IllegalArgumentException ignored) {
+            }
+        }
+        return null;
     }
 
     public double computeOutboundDamage(Player attacker, double rawDamage) {

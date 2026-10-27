@@ -1,5 +1,6 @@
 package com.lino.skills.domain;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,31 +34,31 @@ public final class PlayerProfile {
     }
 
     public int getSkillTier(String skillId) {
-        return skillTiers.getOrDefault(skillId.toLowerCase(), 0);
+        return skillTiers.getOrDefault(skillId.toLowerCase(Locale.ROOT), 0);
     }
 
     public void setSkillTier(String skillId, int tier) {
-        skillTiers.put(skillId.toLowerCase(), Math.max(0, tier));
+        skillTiers.put(skillId.toLowerCase(Locale.ROOT), Math.max(0, tier));
     }
 
     public long getSkillXp(String skillId) {
-        return skillXp.getOrDefault(skillId.toLowerCase(), 0L);
+        return skillXp.getOrDefault(skillId.toLowerCase(Locale.ROOT), 0L);
     }
 
     public void setSkillXp(String skillId, long xp) {
-        skillXp.put(skillId.toLowerCase(), Math.max(0L, xp));
+        skillXp.put(skillId.toLowerCase(Locale.ROOT), Math.max(0L, xp));
     }
 
     public double getBonusAttribute(String attrId) {
-        return bonusAttributes.getOrDefault(attrId.toLowerCase(), 0.0);
+        return bonusAttributes.getOrDefault(attrId.toLowerCase(Locale.ROOT), 0.0);
     }
 
     public void setBonusAttribute(String attrId, double amount) {
-        bonusAttributes.put(attrId.toLowerCase(), amount);
+        bonusAttributes.put(attrId.toLowerCase(Locale.ROOT), amount);
     }
 
     public void addBonusAttribute(String attrId, double delta) {
-        String key = attrId.toLowerCase();
+        String key = attrId.toLowerCase(Locale.ROOT);
         bonusAttributes.put(key, bonusAttributes.getOrDefault(key, 0.0) + delta);
     }
 

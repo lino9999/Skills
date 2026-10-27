@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.Map;
 import java.util.UUID;
@@ -42,5 +43,10 @@ public final class RoamHandler implements Listener {
         } else {
             stepAccumulator.put(explorer.getUniqueId(), total);
         }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onQuit(PlayerQuitEvent event) {
+        stepAccumulator.remove(event.getPlayer().getUniqueId());
     }
 }
